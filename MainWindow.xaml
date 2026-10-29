@@ -1,0 +1,31 @@
+<Window x:Class="FitnessApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:FitnessApp.ViewModels"
+        xmlns:views="clr-namespace:FitnessApp.Views"
+        mc:Ignorable="d"
+        Title="Fitness App" Height="610" Width="910"
+        Background="{StaticResource AppBackground}" WindowStartupLocation="CenterScreen">
+    
+    <Window.DataContext>
+        <viewmodels:MainViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+            <views:LoginView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:RegisterViewModel}">
+            <views:RegisterView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:DashboardViewModel}">
+            <views:DashboardView />
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <ContentControl Content="{Binding CurrentView}"/>
+    </Grid>
+</Window>
